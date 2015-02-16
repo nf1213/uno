@@ -1,18 +1,18 @@
-== README
+= README
 
-##Card
+=== Card
  * int:number - higher than 9 represent special cards
  * string:color
 
-##Users
+=== Users
  * Devise Fields
 
-##CardOwnerships
+=== CardOwnerships
   * int:user_id
   * int:card_id
   * int:game_id
 
-##Game
+=== Game
   * int:player1
   * int:player2
   * int:player3
