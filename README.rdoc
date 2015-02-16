@@ -1,28 +1,20 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Card
+ * int:number - higher than 9 represent special cards
+ * string:color
 
-Things you may want to cover:
+## Users
+ * Devise Fields
 
-* Ruby version
+## CardOwnerships
+  * int:user_id
+  * int:card_id
+  * int:game_id
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+## Game
+  * int:player1
+  * int:player2
+  * int:player3
+  * int:player4
+User id's. If no one else joins game, dummies fill remaining players.
