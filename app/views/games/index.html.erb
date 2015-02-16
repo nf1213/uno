@@ -1,0 +1,11 @@
+<div class="row">
+  <div class="columns small-12">
+    <%= simple_form_for @game do |f| %>
+      <%= f.button :submit, "New Game", class: "button" %>
+    <% end %>
+
+    <% @games.each do |game| %>
+      <p><%= link_to "#{game.player1.email}'s game", game_path(game) %></p>
+    <% end %>
+  </div>
+</div>
