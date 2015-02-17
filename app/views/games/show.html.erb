@@ -1,4 +1,7 @@
 <div class="row">
-  <div class="columns small-12">
-  </div>
+  <% @cards.each do |card| %>
+    <div class="card columns large-1 left <%= card.color %>">
+      <%= card.number %>
+    </div>
+  <% end %>
 </div>

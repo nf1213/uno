@@ -15,3 +15,25 @@
  *= require foundation_and_overrides
 
  */
+
+.card {
+  width: 100px;
+  height: 150px;
+  margin-right: 5px;
+}
+
+.red {
+  background-color: red;
+}
+
+.blue {
+  background-color: blue;
+}
+
+.green {
+  background-color: green;
+}
+
+.yellow {
+  background-color: yellow;
+}
