@@ -1,5 +1,5 @@
 class Card < ActiveRecord::Base
 
-  validates :number,
+  validates :value,
     presence: true
 end

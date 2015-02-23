@@ -5,3 +5,24 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+## Create Uno Deck
+Card.destroy_all
+
+
+["red", "blue", "green", "yellow"].each do |color|
+  2.times do
+    (1..9).each do |i|
+      Card.create(color: color, value: i.to_s)
+    end
+    Card.create(color: color, value: "Draw Two")
+    Card.create(color: color, value: "Skip")
+    Card.create(color: color, value: "Reverse")
+  end
+  Card.create(color: color, value: 0.to_s)
+end
+
+4.times do
+  Card.create(color: "wild", value: "Wild")
+  Card.create(color: "wild", value: "Wild: Draw 4")
+end
