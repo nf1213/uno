@@ -1,7 +1,7 @@
 <div class="row">
   <% @cards.each do |card| %>
     <div class="card columns large-1 left <%= card.color %>">
-      <%= card.number %>
+      <%= image_tag "cards/#{card.value}.png", class: "card-img" %>
     </div>
   <% end %>
 </div>

@@ -20,6 +20,12 @@
   width: 100px;
   height: 150px;
   margin-right: 5px;
+  margin-top: 5px;
+}
+
+.card-img {
+  width: 100px;
+  height: 150px;
 }
 
 .red {
@@ -36,4 +42,9 @@
 
 .yellow {
   background-color: yellow;
+}
+
+.wild {
+  background-color: black;
+  color: white;
 }

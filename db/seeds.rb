@@ -24,5 +24,5 @@ end
 
 4.times do
   Card.create(color: "wild", value: "Wild")
-  Card.create(color: "wild", value: "Wild: Draw 4")
+  Card.create(color: "wild", value: "WildDrawFour")
 end
