@@ -20,4 +20,11 @@ class GamesController < ApplicationController
       render :index
     end
   end
+
+  def play_card
+    @game = Game.find(params[:id])
+    @card = Card.find(params[:card_id])
+    CardOwnership.find_by_game_id_and_card_id(params[:id], params[:card_id]).destroy
+    redirect_to @game
+  end
 end
