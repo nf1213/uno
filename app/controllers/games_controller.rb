@@ -28,8 +28,12 @@ class GamesController < ApplicationController
   def play_card
     @game = Game.find(params[:id])
     @card = Card.find(params[:card_id])
-    CardOwnership.find_by_game_id_and_card_id(params[:id], params[:card_id]).destroy
-    @game.update(last_played_id: @card.id)
-    redirect_to @game
+    if @game.can_play?(@card)
+      CardOwnership.find_by_game_id_and_card_id(params[:id], params[:card_id]).destroy
+      @game.update(last_played_id: @card.id)
+      redirect_to @game, notice: "Card played"
+    else
+      redirect_to @game, notice: "Invalid play"
+    end
   end
 end

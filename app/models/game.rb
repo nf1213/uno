@@ -1,5 +1,6 @@
 class Game < ActiveRecord::Base
-  has_many :game_players
+  has_many :game_players, dependent: :destroy
+  has_many :card_ownerships, dependent: :destroy
   def deal(num, player)
     puts num
     unless num <= 0
@@ -25,5 +26,13 @@ class Game < ActiveRecord::Base
       end
     end
     cards
+  end
+
+  def can_play?(card)
+    last = Card.find(last_played_id)
+    if card.color == last.color || card.value == last.value || card.value.include?("Wild")
+      return true
+    end
+    false
   end
 end
