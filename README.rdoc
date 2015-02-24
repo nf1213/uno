@@ -1,7 +1,7 @@
 = README
 
 === Card
-  * int:number - higher than 9 represent special cards
+  * int:value - number or special type
   * string:color
 
 === Users
