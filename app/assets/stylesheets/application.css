@@ -16,12 +16,24 @@
 
  */
 
+body {
+  background-color: #AEB4B8;
+}
 .card {
-  width: 100px;
-  height: 150px;
-  margin-right: 5px;
   margin-top: 15px;
   padding: 0;
+  width: 105px;
+  height: 155px;
+  border-radius: 3%;
+}
+
+.played {
+  border: 5px solid black;
+}
+
+.playable {
+  border: 5px solid white;
+  margin-right: -40px;
 }
 
 .playable:hover {
@@ -29,6 +41,7 @@
   -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
   -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
   box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  z-index: 1;
 }
 
 .card-img {
@@ -54,5 +67,4 @@
 
 .wild {
   background-color: black;
-  color: white;
 }

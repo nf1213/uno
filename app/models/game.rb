@@ -1,6 +1,7 @@
 class Game < ActiveRecord::Base
   has_many :game_players, dependent: :destroy
   has_many :card_ownerships, dependent: :destroy
+
   def deal(num, player)
     puts num
     unless num <= 0
@@ -34,5 +35,14 @@ class Game < ActiveRecord::Base
       return true
     end
     false
+  end
+
+  def no_cards_playable?(player)
+    player.cards.each do |card|
+      if can_play?(card)
+        return false
+      end
+    end
+    true
   end
 end

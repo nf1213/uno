@@ -10,6 +10,10 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
     @cards = @game.game_players.find_by_user_id(current_user.id).cards
     @played = Card.find(@game.last_played_id)
+    @player = GamePlayer.find_by(game: @game, user: current_user)
+    if @game.no_cards_playable?(@player)
+      @game.deal(1, @player)
+    end
   end
 
   def create
