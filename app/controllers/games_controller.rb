@@ -8,13 +8,14 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
-    @cards = current_user.cards
+    @cards = @game.game_players.find_by_user_id(current_user.id).cards
   end
 
   def create
-    @game = Game.new(player1: current_user)
-    if @game.save
-      @game.deal(7, current_user)
+    @game = Game.new
+    @player = GamePlayer.new(game: @game, user: current_user)
+    if @game.save && @player.save
+      @game.deal(7, @player)
       redirect_to @game, notice: "New Game Started"
     else
       render :index

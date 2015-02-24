@@ -1,16 +1,12 @@
 class Game < ActiveRecord::Base
-  belongs_to :player1, class_name: "User"
-  belongs_to :player2, class_name: "User"
-  belongs_to :player3, class_name: "User"
-  belongs_to :player4, class_name: "User"
-
-  def deal(num, user)
+  has_many :game_players
+  def deal(num, player)
     puts num
     unless num <= 0
       deck = find_unowned_cards
       card = deck.shuffle.first
-      CardOwnership.create(game: self, user: user, card: card)
-      deal(num - 1, user)
+      CardOwnership.create(game: self, game_player: player, card: card)
+      deal(num - 1, player)
     end
   end
 

@@ -11,17 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150223171648) do
+ActiveRecord::Schema.define(version: 20150224190049) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "card_ownerships", force: :cascade do |t|
-    t.integer  "user_id",    null: false
-    t.integer  "card_id",    null: false
-    t.integer  "game_id",    null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "card_id",        null: false
+    t.integer  "game_id",        null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "game_player_id", null: false
   end
 
   add_index "card_ownerships", ["card_id", "game_id"], name: "index_card_ownerships_on_card_id_and_game_id", unique: true, using: :btree
@@ -33,11 +33,12 @@ ActiveRecord::Schema.define(version: 20150223171648) do
     t.string   "value"
   end
 
+  create_table "game_players", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "game_id", null: false
+  end
+
   create_table "games", force: :cascade do |t|
-    t.integer  "player1_id"
-    t.integer  "player2_id"
-    t.integer  "player3_id"
-    t.integer  "player4_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
