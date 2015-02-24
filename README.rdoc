@@ -1,20 +1,20 @@
 = README
 
 === Card
- * int:number - higher than 9 represent special cards
- * string:color
+  * int:number - higher than 9 represent special cards
+  * string:color
 
 === Users
- * Devise Fields
+  * Devise Columns
 
 === CardOwnerships
-  * int:user_id
+  * int:game_player_id
   * int:card_id
   * int:game_id
 
 === Game
-  * int:player1
-  * int:player2
-  * int:player3
-  * int:player4
-User id's. If no one else joins game, dummies fill remaining players.
+  * no columns, but has lots of relationships and holds the game play methods in it's model
+
+=== Game Players
+  * int:user_id
+  * int:game_id
