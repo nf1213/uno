@@ -1,6 +1,11 @@
 <div class="row">
+  <div class="columns small-12 card <%= @played.color %>">
+    <%= image_tag("cards/#{@played.value}.png", class: "card-img") %>
+  </div>
+</div>
+<div class="row">
   <% @cards.each do |card| %>
-    <div class="card columns large-1 left <%= card.color %>">
+    <div class="card playable columns large-1 left <%= card.color %>">
       <%= link_to(image_tag("cards/#{card.value}.png", class: "card-img"), play_card_path(@game.id, card.id)) %>
     </div>
   <% end %>

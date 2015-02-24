@@ -13,7 +13,7 @@
   * int:game_id
 
 === Game
-  * no columns, but has lots of relationships and holds the game play methods in it's model
+  * int:last_played_id
 
 === Game Players
   * int:user_id
