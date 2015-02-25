@@ -32,7 +32,7 @@ class Game < ActiveRecord::Base
           if card.value.include?("Wild")
             CardOwnership.find_by_game_id_and_card_id(self.id, card.id).destroy
             color = ['red', 'green', 'yellow', 'blue'].shuffle.first
-            last = Card.find_by_color_and_value(color, "wild")
+            last = Card.find_by_color_and_value(color, "Wild")
             update(last_played_id: last.id)
             break
           else

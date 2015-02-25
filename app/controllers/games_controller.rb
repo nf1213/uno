@@ -43,8 +43,8 @@ class GamesController < ApplicationController
         redirect_to colors_path, notice: "Chose a color"
       else
         redirect_to @game, notice: "Card played"
+        @game.play_dummies
       end
-      @game.play_dummies
     else
       redirect_to @game, notice: "Invalid play"
     end
@@ -58,5 +58,6 @@ class GamesController < ApplicationController
     wild = Card.find_by_color_and_value(@color, "Wild")
     @game.update(last_played_id: wild.id)
     redirect_to @game
+    @game.play_dummies
   end
 end
