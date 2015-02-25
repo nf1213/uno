@@ -1,0 +1,7 @@
+<div class="row">
+  <% ["red", "green", "yellow", "blue"].each do |color| %>
+    <div class="columns small-1">
+      <%= button_to "", choose_color_path(@game, color), class: "card #{color}", method: :post %>
+    </div>
+  <% end %>
+</div>

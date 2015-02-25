@@ -20,6 +20,7 @@ Card.destroy_all
     Card.create(color: color, value: "Reverse")
   end
   Card.create(color: color, value: 0.to_s)
+  Card.create(color: color, value: "Wild")
 end
 
 4.times do
