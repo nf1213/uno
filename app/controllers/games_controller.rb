@@ -20,6 +20,7 @@ class GamesController < ApplicationController
     @player = GamePlayer.find_by(game: @game, user: current_user)
     if @game.no_cards_playable?(@player)
       @game.deal(1, @player)
+      @game.play_dummies
     end
   end
 
@@ -39,7 +40,7 @@ class GamesController < ApplicationController
     if @game.can_play?(@card)
       CardOwnership.find_by_game_id_and_card_id(params[:id], params[:card_id]).destroy
       @game.update(last_played_id: @card.id)
-      if @card.value.include?("Wild")
+      if @card.is_wild?
         redirect_to colors_path, notice: "Chose a color"
       else
         redirect_to @game, notice: "Card played"

@@ -4,13 +4,11 @@ class Game < ActiveRecord::Base
 
   def start(p1)
     robot = User.find_by_email("r@b.t")
-    p2 = GamePlayer.create(game: self, user: robot)
-    p3 = GamePlayer.create(game: self, user: robot)
-    p4 = GamePlayer.create(game: self, user: robot)
+    3.times do
+      robot_player = GamePlayer.create(game: self, user: robot)
+      deal(7, robot_player)
+    end
     deal(7, p1)
-    deal(7, p2)
-    deal(7, p3)
-    deal(7, p4)
     first = find_unowned_cards.shuffle.first
     update(last_played_id: first.id)
   end
@@ -29,9 +27,9 @@ class Game < ActiveRecord::Base
         deal(1, robot)
       else
         robot.cards.each do |card|
-          if card.value.include?("Wild")
+          if card.is_wild?
             CardOwnership.find_by_game_id_and_card_id(self.id, card.id).destroy
-            color = ['red', 'green', 'yellow', 'blue'].shuffle.first
+            color = Card.colors.shuffle.first
             last = Card.find_by_color_and_value(color, "Wild")
             update(last_played_id: last.id)
             break
@@ -48,7 +46,7 @@ class Game < ActiveRecord::Base
   end
 
   def is_owned_in_game(card)
-    if card.value.include?("Wild") && card.color != "wild"
+    if card.is_wild? && card.color != "wild"
       return true
     elsif CardOwnership.find_by_game_id_and_card_id(self.id, card.id).nil?
       return false
@@ -68,7 +66,7 @@ class Game < ActiveRecord::Base
 
   def can_play?(card)
     last = Card.find(last_played_id)
-    if card.color == last.color || card.value == last.value || card.value.include?("Wild")
+    if card.color == last.color || card.value == last.value || card.is_wild?
       return true
     end
     false

@@ -10,7 +10,7 @@
 Card.destroy_all
 
 
-["red", "blue", "green", "yellow"].each do |color|
+Card.colors.each do |color|
   2.times do
     (1..9).each do |i|
       Card.create(color: color, value: i.to_s)

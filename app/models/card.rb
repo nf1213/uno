@@ -4,4 +4,15 @@ class Card < ActiveRecord::Base
   has_many :games, through: :card_ownerships
   validates :value,
     presence: true
+
+  def self.colors
+    ['red', 'green', 'blue', 'yellow']
+  end
+
+  def is_wild?
+    if value.include?("Wild")
+      return true
+    end
+    false
+  end
 end
