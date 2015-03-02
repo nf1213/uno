@@ -7,9 +7,6 @@ class CardOwnership < ActiveRecord::Base
     uniqueness: {scope: :game_id},
     presence: true
 
-  validates :game_player,
-    presence: true
-
-  validates :game,
-    presence: true
+  validates_presence_of :game_player
+  validates_presence_of :game
 end

@@ -51,9 +51,6 @@ class GamesController < ApplicationController
     end
   end
 
-  def colors
-  end
-
   def choose_color
     @color = params[:color]
     wild = Card.find_by_color_and_value(@color, "Wild")
